@@ -388,9 +388,9 @@ void TreeQuad::setTextureSplit(float fraction)
 	ofRectangle r = topQuad.getMeshBoundingBox();
 	float w = source->getWidth();
 	float h = source->getHeight();
-	topQuad.setTexCoordsFromRect(ofRectangle(0, 0, w, fraction * h));
+	topQuad.setTexCoordsFromRect(ofRectangle(0, 0, 1, fraction));
 	topQuad.setVetricesFromRect(ofRectangle(r.x, r.y, w, fraction * h));
-	bottomQuad.setTexCoordsFromRect(ofRectangle(0, fraction * h, w, (1 - fraction) * h));
+	bottomQuad.setTexCoordsFromRect(ofRectangle(0, fraction, 1, 1 - fraction));
 	bottomQuad.setVetricesFromRect(ofRectangle(r.x, r.y + fraction * h, w, (1 - fraction) * h));
 }
 

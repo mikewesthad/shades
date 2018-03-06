@@ -20,9 +20,9 @@ Quad::Quad()
 	mesh.addTriangle(2, 3, 0);
 
 	mesh.addTexCoord(ofVec3f(0, 0));
-	mesh.addTexCoord(ofVec3f(800, 0));
-	mesh.addTexCoord(ofVec3f(800, 600));
-	mesh.addTexCoord(ofVec3f(0, 600));
+	mesh.addTexCoord(ofVec3f(1, 0));
+	mesh.addTexCoord(ofVec3f(1, 1));
+	mesh.addTexCoord(ofVec3f(0, 1));
 }
 
 Quad::~Quad()
@@ -40,10 +40,10 @@ void Quad::setFromRect(ofRectangle rect)
 	mesh.setVertex(BOTTOM_RIGHT, ofVec3f(rect.getRight(), rect.getBottom()));
 	mesh.setVertex(BOTTOM_LEFT, ofVec3f(rect.getLeft(), rect.getBottom()));
 
-	mesh.setTexCoord(TOP_LEFT, ofVec2f(rect.getLeft(), rect.getTop()));
-	mesh.setTexCoord(TOP_RIGHT, ofVec2f(rect.getRight(), rect.getTop()));
-	mesh.setTexCoord(BOTTOM_RIGHT, ofVec2f(rect.getRight(), rect.getBottom()));
-	mesh.setTexCoord(BOTTOM_LEFT, ofVec2f(rect.getLeft(), rect.getBottom()));
+	mesh.setTexCoord(TOP_LEFT, ofVec2f(0, 0));
+	mesh.setTexCoord(TOP_RIGHT, ofVec2f(1, 0));
+	mesh.setTexCoord(BOTTOM_RIGHT, ofVec2f(1, 1));
+	mesh.setTexCoord(BOTTOM_LEFT, ofVec2f(0, 1));
 }
 
 void Quad::setTexCoordsFromRect(ofRectangle rect)

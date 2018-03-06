@@ -9,6 +9,7 @@ void ofApp::setup(){
 	ofSetFrameRate(60);
 
 	ofSetWindowShape(ofGetScreenWidth(), ofGetScreenHeight());
+	ofEnableNormalizedTexCoords();
 	
 	//gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
 	//gui->setTheme(new GuiTheme());
