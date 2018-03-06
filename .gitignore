@@ -50,6 +50,7 @@ xcuserdata/
 *.ilk
 *.aps
 ipch/
+.vs/
 
 # Eclipse
 .metadata
