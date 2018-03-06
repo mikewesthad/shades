@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofxDatGui.h"
+//#include "ofxDatGui.h"
 
-class GuiTheme : public ofxDatGuiThemeCandy
-{
-public:
-	GuiTheme();
-	~GuiTheme();
-};
+//class GuiTheme : public ofxDatGuiThemeCandy
+//{
+//public:
+//	GuiTheme();
+//	~GuiTheme();
+//};
 
