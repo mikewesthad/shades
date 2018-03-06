@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "GuiTheme.h"
+//#include "GuiTheme.h"
 #include "./MediaSource/ImageSource.h"
 #include "./MediaSource/VideoSource.h"
 #include "regex"
@@ -10,154 +10,154 @@ void ofApp::setup(){
 
 	ofSetWindowShape(ofGetScreenWidth(), ofGetScreenHeight());
 	
-	gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
-	gui->setTheme(new GuiTheme());
-	gui->addHeader(":: Menu ::");
-	gui->addButton("Add Quad");
-	gui->addButton("Clear All Quads");
-	gui->addButton("Save Scene");
-	gui->addButton("Load Scene");
-	gui->addButton("Enter Presentation Mode");
-	gui->addBreak();
-	selectedQuadFolder = gui->addFolder("Selected Quad", ofColor::black);
-	selectedQuadFolder->addButton("Delete");
-	selectedQuadFolder->addButton("Change Source");
-	textureSplitSlider = selectedQuadFolder->addSlider("Texture Split", 0, 1);
-	selectedQuadFolder->addButton("Set Start Animation");
-	selectedQuadFolder->addButton("Set End Animation");
-	animationDurationInput = selectedQuadFolder->addTextInput("Animation Duration (m)", "30");
-	animationDurationInput->setInputType(ofxDatGuiInputType::NUMERIC);
-	videoSpeedSlider = selectedQuadFolder->addSlider("Video Speed", 0, 5);
-	videoSpeedSlider->setValue(1);
-	selectedQuadFolder->addButton("Play Animation");
-	selectedQuadFolder->addButton("Stop Animation");
-	selectedQuadFolder->expand();
-	gui->addBreak();
-	ofxDatGuiFolder* hotkeyFolder = gui->addFolder("Hotkeys", ofColor::white);
-	hotkeyFolder->addLabel("p to enter presentation mode");
-	hotkeyFolder->addLabel("m to enter mapping mode");
-	hotkeyFolder->addLabel("f to toggle fullscreen");
-	hotkeyFolder->expand();
-	gui->addFRM();
-	gui->addFooter();
+	//gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
+	//gui->setTheme(new GuiTheme());
+	//gui->addHeader(":: Menu ::");
+	//gui->addButton("Add Quad");
+	//gui->addButton("Clear All Quads");
+	//gui->addButton("Save Scene");
+	//gui->addButton("Load Scene");
+	//gui->addButton("Enter Presentation Mode");
+	//gui->addBreak();
+	//selectedQuadFolder = gui->addFolder("Selected Quad", ofColor::black);
+	//selectedQuadFolder->addButton("Delete");
+	//selectedQuadFolder->addButton("Change Source");
+	//textureSplitSlider = selectedQuadFolder->addSlider("Texture Split", 0, 1);
+	//selectedQuadFolder->addButton("Set Start Animation");
+	//selectedQuadFolder->addButton("Set End Animation");
+	//animationDurationInput = selectedQuadFolder->addTextInput("Animation Duration (m)", "30");
+	//animationDurationInput->setInputType(ofxDatGuiInputType::NUMERIC);
+	//videoSpeedSlider = selectedQuadFolder->addSlider("Video Speed", 0, 5);
+	//videoSpeedSlider->setValue(1);
+	//selectedQuadFolder->addButton("Play Animation");
+	//selectedQuadFolder->addButton("Stop Animation");
+	//selectedQuadFolder->expand();
+	//gui->addBreak();
+	//ofxDatGuiFolder* hotkeyFolder = gui->addFolder("Hotkeys", ofColor::white);
+	//hotkeyFolder->addLabel("p to enter presentation mode");
+	//hotkeyFolder->addLabel("m to enter mapping mode");
+	//hotkeyFolder->addLabel("f to toggle fullscreen");
+	//hotkeyFolder->expand();
+	//gui->addFRM();
+	//gui->addFooter();
 
 
-	gui->onSliderEvent([&](ofxDatGuiSliderEvent e)
-	{
-		if (e.target->is("Texture Split")) {
-			selectedTree->setTextureSplit(e.value);
-		}
-		else if (e.target->is("Video Speed")) {
-			if (selectedTree->getSource()->getType() == SourceType::video) {
-				VideoSource * source = dynamic_cast<VideoSource*>(selectedTree->getSource());
-				source->setSpeed(e.value);
-			}
-		}
-	});
-	gui->onTextInputEvent([&](ofxDatGuiTextInputEvent e)
-	{
-		if (e.target->is("Animation Duration (m)")) {
-			float duration = ofToFloat(e.text);
-			selectedTree->setAnimationDuration(duration * 60);
-		}
-	});
-	gui->onButtonEvent([&](ofxDatGuiButtonEvent e)
-	{
-		if (e.target->is("Add Quad")) {
-			ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
-			if (result.bSuccess) {
-				string path = result.getPath();
+	//gui->onSliderEvent([&](ofxDatGuiSliderEvent e)
+	//{
+	//	if (e.target->is("Texture Split")) {
+	//		selectedTree->setTextureSplit(e.value);
+	//	}
+	//	else if (e.target->is("Video Speed")) {
+	//		if (selectedTree->getSource()->getType() == SourceType::video) {
+	//			VideoSource * source = dynamic_cast<VideoSource*>(selectedTree->getSource());
+	//			source->setSpeed(e.value);
+	//		}
+	//	}
+	//});
+	//gui->onTextInputEvent([&](ofxDatGuiTextInputEvent e)
+	//{
+	//	if (e.target->is("Animation Duration (m)")) {
+	//		float duration = ofToFloat(e.text);
+	//		selectedTree->setAnimationDuration(duration * 60);
+	//	}
+	//});
+	//gui->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	//{
+	//	if (e.target->is("Add Quad")) {
+	//		ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
+	//		if (result.bSuccess) {
+	//			string path = result.getPath();
 
-				regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
-				regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
+	//			regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
+	//			regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
 
-				BaseSource * source;
-				if (regex_search(path, imageExtensions)) {
-					source = new ImageSource(path);
-				}
-				else if (regex_search(path, videoExtensions)) {
-					source = new VideoSource(path);
-				}
-				else {
-					throw std::string("Unrecognized file format: " + path);
-				}
+	//			BaseSource * source;
+	//			if (regex_search(path, imageExtensions)) {
+	//				source = new ImageSource(path);
+	//			}
+	//			else if (regex_search(path, videoExtensions)) {
+	//				source = new VideoSource(path);
+	//			}
+	//			else {
+	//				throw std::string("Unrecognized file format: " + path);
+	//			}
 
-				shared_ptr<TreeQuad> tree (new TreeQuad(0, 0, source, 0.8));
-				trees.push_back(tree);
-				selectTree(tree);
-			}
-		}
-		else if (e.target->is("Delete")) {
-			if (selectedTree) {
-				for (int i = 0; i < trees.size(); i++) {
-					if (trees[i] == selectedTree) {
-						trees.erase(trees.begin() + i);
-						selectedTree = nullptr;
-					}
-				}
-			}
-		}
-		else if (e.target->is("Change Source")) {
-			ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
-			if (result.bSuccess) {
-				string path = result.getPath();
+	//			shared_ptr<TreeQuad> tree (new TreeQuad(0, 0, source, 0.8));
+	//			trees.push_back(tree);
+	//			selectTree(tree);
+	//		}
+	//	}
+	//	else if (e.target->is("Delete")) {
+	//		if (selectedTree) {
+	//			for (int i = 0; i < trees.size(); i++) {
+	//				if (trees[i] == selectedTree) {
+	//					trees.erase(trees.begin() + i);
+	//					selectedTree = nullptr;
+	//				}
+	//			}
+	//		}
+	//	}
+	//	else if (e.target->is("Change Source")) {
+	//		ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
+	//		if (result.bSuccess) {
+	//			string path = result.getPath();
 
-				regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
-				regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
+	//			regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
+	//			regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
 
-				BaseSource * source;
-				if (regex_search(path, imageExtensions)) {
-					source = new ImageSource(path);
-				}
-				else if (regex_search(path, videoExtensions)) {
-					source = new VideoSource(path);
-				}
-				else {
-					throw std::string("Unrecognized file format: " + path);
-				}
+	//			BaseSource * source;
+	//			if (regex_search(path, imageExtensions)) {
+	//				source = new ImageSource(path);
+	//			}
+	//			else if (regex_search(path, videoExtensions)) {
+	//				source = new VideoSource(path);
+	//			}
+	//			else {
+	//				throw std::string("Unrecognized file format: " + path);
+	//			}
 
-				selectedTree->setSource(source);
-			}
-		}
-		else if (e.target->is("Set Start Animation")) {
-			if (selectedTree) {
-				selectedTree->setAnimationStartShape();
-			}
-		}
-		else if (e.target->is("Set End Animation")) {
-			if (selectedTree) {
-				selectedTree->setAnimationEndShape();
-			}
-		}
-		else if (e.target->is("Play Animation")) {
-			if (selectedTree) {
-				selectedTree->playAnimation();
-			}
-		}
-		else if (e.target->is("Stop Animation")) {
-			if (selectedTree) {
-				selectedTree->stopAnimation();
-			}
-		}
-		else if (e.target->is("Save Scene")) {
-			ofFileDialogResult result = ofSystemSaveDialog("scene.xml", "Save");
-			if (result.bSuccess) {
-				saveScene(result.getPath());
-			}
-		}
-		else if (e.target->is("Load Scene")) {
-			ofFileDialogResult result = ofSystemLoadDialog("Load an xml scene file", false, ofToDataPath(".", true));
-			if (result.bSuccess) {
-				loadScene(result.getPath());
-			}
-		}
-		else if (e.target->is("Clear All Quads")) {
-			clearScene();
-		}
-		else if (e.target->is("Enter Presentation Mode")) {
-			setMode(ApplicationMode::presentation);
-		}
-	});
+	//			selectedTree->setSource(source);
+	//		}
+	//	}
+	//	else if (e.target->is("Set Start Animation")) {
+	//		if (selectedTree) {
+	//			selectedTree->setAnimationStartShape();
+	//		}
+	//	}
+	//	else if (e.target->is("Set End Animation")) {
+	//		if (selectedTree) {
+	//			selectedTree->setAnimationEndShape();
+	//		}
+	//	}
+	//	else if (e.target->is("Play Animation")) {
+	//		if (selectedTree) {
+	//			selectedTree->playAnimation();
+	//		}
+	//	}
+	//	else if (e.target->is("Stop Animation")) {
+	//		if (selectedTree) {
+	//			selectedTree->stopAnimation();
+	//		}
+	//	}
+	//	else if (e.target->is("Save Scene")) {
+	//		ofFileDialogResult result = ofSystemSaveDialog("scene.xml", "Save");
+	//		if (result.bSuccess) {
+	//			saveScene(result.getPath());
+	//		}
+	//	}
+	//	else if (e.target->is("Load Scene")) {
+	//		ofFileDialogResult result = ofSystemLoadDialog("Load an xml scene file", false, ofToDataPath(".", true));
+	//		if (result.bSuccess) {
+	//			loadScene(result.getPath());
+	//		}
+	//	}
+	//	else if (e.target->is("Clear All Quads")) {
+	//		clearScene();
+	//	}
+	//	else if (e.target->is("Enter Presentation Mode")) {
+	//		setMode(ApplicationMode::presentation);
+	//	}
+	//});
 
 	bool validSettings = xmlSettings.load("settings.xml") && xmlSettings.exists("settings");
 	xmlSettings.setTo("settings");
@@ -179,7 +179,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	selectedQuadFolder->setVisible(selectedTree != nullptr);
+	//selectedQuadFolder->setVisible(selectedTree != nullptr);
 }
 
 //--------------------------------------------------------------
@@ -195,7 +195,7 @@ void ofApp::setMode(ApplicationMode newMode) {
 	this->mode = newMode;
 	if (this->mode == ApplicationMode::presentation) {
 		mode = ApplicationMode::presentation;
-		gui->setVisible(false);
+		//gui->setVisible(false);
 		for (int i = 0; i < trees.size(); i++) {
 			trees[i]->disableInput();
 			trees[i]->playAnimation();
@@ -203,7 +203,7 @@ void ofApp::setMode(ApplicationMode newMode) {
 	}
 	else if (this->mode == ApplicationMode::mapping) {
 		mode = ApplicationMode::mapping;
-		gui->setVisible(true);
+		//gui->setVisible(true);
 		for (int i = 0; i < trees.size(); i++) {
 			trees[i]->enableInput();
 			trees[i]->stopAnimation();
@@ -214,7 +214,7 @@ void ofApp::setMode(ApplicationMode newMode) {
 void ofApp::selectTree(shared_ptr<TreeQuad> tree) {
 	tree->enableInput();
 	selectedTree = tree;
-	animationDurationInput->setText(ofToString(selectedTree->getAnimationDuration() / 60));
+	//animationDurationInput->setText(ofToString(selectedTree->getAnimationDuration() / 60));
 	for (int i = 0; i < trees.size(); i++) {
 		if (trees[i] != tree) {
 			trees[i]->disableInput();

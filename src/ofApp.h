@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "Quad.h"
 #include "TreeQuads.h"
-#include "ofxDatGui.h"
+//#include "ofxDatGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -40,12 +40,11 @@ class ofApp : public ofBaseApp{
 		ofXml xmlSettings;
 
 		shared_ptr<TreeQuad> selectedTree;
-		ofxDatGuiTextInput* animationDurationInput;
-		ofxDatGuiFolder* selectedQuadFolder;
-		ofxDatGuiSlider * textureSplitSlider;
-		ofxDatGuiSlider * videoSpeedSlider;
-
 		vector<shared_ptr<TreeQuad>> trees;
 
-		ofxDatGui* gui;
+		//ofxDatGuiTextInput* animationDurationInput;
+		//ofxDatGuiFolder* selectedQuadFolder;
+		//ofxDatGuiSlider * textureSplitSlider;
+		//ofxDatGuiSlider * videoSpeedSlider;
+		//ofxDatGui* gui;
 };
