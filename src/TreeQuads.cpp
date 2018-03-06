@@ -227,17 +227,17 @@ ofXml TreeQuad::saveToXml(string name) {
 	xml.addValue("animationDuration", animationDurationSeconds);
 
 	ofXml topQuadXml = topQuad.saveToXml("topQuad");
-	ofXml bottomQuadXml = topQuad.saveToXml("bottomQuad");
-	ofXml startTopQuadXml = topQuad.saveToXml("startTopQuad");
-	ofXml endTopQuadXml = topQuad.saveToXml("endTopQuad");
-	ofXml startBottomQuadXml = topQuad.saveToXml("startBottomQuad");
-	ofXml endBottomQuadXml = topQuad.saveToXml("endBottomQuad");
-	xml.addXml(topQuadXml);
-	xml.addXml(bottomQuadXml);
-	xml.addXml(startTopQuadXml);
-	xml.addXml(endTopQuadXml);
-	xml.addXml(startBottomQuadXml);
-	xml.addXml(endBottomQuadXml);
+	ofXml bottomQuadXml = bottomQuad.saveToXml("bottomQuad");
+	ofXml startTopQuadXml = startTopQuad.saveToXml("startTopQuad");
+	ofXml endTopQuadXml = endTopQuad.saveToXml("endTopQuad");
+	ofXml startBottomQuadXml = startBottomQuad.saveToXml("startBottomQuad");
+	ofXml endBottomQuadXml = endBottomQuad.saveToXml("endBottomQuad");
+	xml.addXml(topQuadXml, true);
+	xml.addXml(bottomQuadXml, true);
+	xml.addXml(startTopQuadXml, true);
+	xml.addXml(endTopQuadXml, true);
+	xml.addXml(startBottomQuadXml, true);
+	xml.addXml(endBottomQuadXml, true);
 	
 	return xml;
 }

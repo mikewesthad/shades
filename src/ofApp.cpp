@@ -267,7 +267,7 @@ void ofApp::saveScene(string path)
 	xmlScene.setTo("trees");
 	for (int i = 0; i < trees.size(); i++) {
 		ofXml treeXml = trees[i]->saveToXml();
-		xmlScene.addXml(treeXml);
+		xmlScene.addXml(treeXml, true);
 	}
 	xmlScene.save(path);
 
