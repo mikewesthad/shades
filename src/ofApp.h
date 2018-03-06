@@ -4,6 +4,7 @@
 #include "Quad.h"
 #include "TreeQuads.h"
 //#include "ofxDatGui.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -15,12 +16,15 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-
+		
 		void setMode(ApplicationMode newMode);
 		void selectTree(shared_ptr<TreeQuad> tree);
 		void clearScene();
-		void loadScene(string path);
-		void saveScene(string path);
+		void loadSceneFromPath(string path);
+		void loadSceneFromPrompt();
+		void saveSceneFromPrompt();
+		void addQuad();
+		void toggleMode();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -47,4 +51,13 @@ class ofApp : public ofBaseApp{
 		//ofxDatGuiSlider * textureSplitSlider;
 		//ofxDatGuiSlider * videoSpeedSlider;
 		//ofxDatGui* gui;
+		ofxPanel newGui;
+		ofxLabel fpsLabel;
+		ofxButton addQuadButton;
+		ofxButton clearSceneButton;
+		ofxButton saveSceneButton;
+		ofxButton loadSceneButton;
+		ofxButton enterPresentationButton;
+		ofxGuiGroup selectedQuadControlGroup;
+		ofxButton deleteQuadButton;
 };

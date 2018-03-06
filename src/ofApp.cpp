@@ -10,6 +10,23 @@ void ofApp::setup(){
 
 	ofSetWindowShape(ofGetScreenWidth(), ofGetScreenHeight());
 	ofEnableNormalizedTexCoords();
+
+	newGui.setup("Menu", "gui-settings.xml");
+	newGui.add(fpsLabel.setup("FPS", "60"));
+	newGui.add(addQuadButton.setup("Add Quad"));
+	newGui.add(clearSceneButton.setup("Clear Scene"));
+	newGui.add(loadSceneButton.setup("Load Scene"));
+	newGui.add(saveSceneButton.setup("Save Scene"));
+	newGui.add(enterPresentationButton.setup("Enter Presentation Mode"));
+	
+	newGui.add(selectedQuadControlGroup.setup("Selected Quad", "gui-settings.xml"));
+	selectedQuadControlGroup.add(deleteQuadButton.setup("Delete"));
+
+	addQuadButton.addListener(this, &ofApp::addQuad);
+	clearSceneButton.addListener(this, &ofApp::clearScene);
+	saveSceneButton.addListener(this, &ofApp::saveSceneFromPrompt);
+	loadSceneButton.addListener(this, &ofApp::loadSceneFromPrompt);
+	enterPresentationButton.addListener(this, &ofApp::toggleMode);
 	
 	//gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
 	//gui->setTheme(new GuiTheme());
@@ -164,11 +181,11 @@ void ofApp::setup(){
 	xmlSettings.setTo("settings");
 	if (xmlSettings.exists("lastLoadedScenePath")) {
 		cout << "loaded found" << endl;
-		loadScene(xmlSettings.getValue("lastLoadedScenePath"));
+		loadSceneFromPath(xmlSettings.getValue("lastLoadedScenePath"));
 	}
 	else if (xmlSettings.exists("lastSavedScenePath")) {
 		cout << "saved found" << endl;
-		loadScene(xmlSettings.getValue("lastSavedScenePath"));
+		loadSceneFromPath(xmlSettings.getValue("lastSavedScenePath"));
 	}
 	else {
 		cout << "No settings found" << endl;
@@ -178,9 +195,45 @@ void ofApp::setup(){
 	}
 }
 
+void ofApp::addQuad() {
+	ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
+	if (result.bSuccess) {
+		string path = result.getPath();
+
+		regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
+		regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
+
+		BaseSource * source;
+		if (regex_search(path, imageExtensions)) {
+			source = new ImageSource(path);
+		}
+		else if (regex_search(path, videoExtensions)) {
+			source = new VideoSource(path);
+		}
+		else {
+			throw std::string("Unrecognized file format: " + path);
+		}
+
+		shared_ptr<TreeQuad> tree(new TreeQuad(0, 0, source, 0.8));
+		trees.push_back(tree);
+		selectTree(tree);
+	}
+}
+
+void ofApp::toggleMode() {
+	if (mode == ApplicationMode::presentation) {
+		mode = ApplicationMode::mapping;
+	}
+	else {
+		mode = ApplicationMode::presentation;
+	}
+	setMode(mode);
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
 	//selectedQuadFolder->setVisible(selectedTree != nullptr);
+	fpsLabel.setup("FPS", ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -189,6 +242,10 @@ void ofApp::draw(){
 
 	for (int i = 0; i < trees.size(); i++) {
 		trees[i]->draw();
+	}
+
+	if (mode == ApplicationMode::mapping) {
+		newGui.draw();
 	}
 }
 
@@ -227,7 +284,7 @@ void ofApp::clearScene() {
 	trees.clear();
 }
 
-void ofApp::loadScene(string path)
+void ofApp::loadSceneFromPath(string path)
 {
 	clearScene();
 
@@ -255,31 +312,48 @@ void ofApp::loadScene(string path)
 	}
 }
 
-void ofApp::saveScene(string path)
+
+void ofApp::loadSceneFromPrompt()
 {
-	if (path.compare(path.length() - 4, 4, ".xml") != 0) {
-		path += ".xml";
+	ofFileDialogResult result = ofSystemLoadDialog("Load an xml scene file", false, ofToDataPath(".", true));
+	if (result.bSuccess) {
+		loadSceneFromPath(result.getPath());
 	}
-	xmlScene.clear();
-	xmlScene.addChild("scene");
-	xmlScene.setTo("scene");
-	xmlScene.addChild("trees");
-	xmlScene.setTo("trees");
-	for (int i = 0; i < trees.size(); i++) {
-		ofXml treeXml = trees[i]->saveToXml();
-		xmlScene.addXml(treeXml, true);
-	}
-	xmlScene.save(path);
+}
 
-	string relativePath = ofFilePath::isAbsolute(path) ? ofFilePath::makeRelative(ofToDataPath("./", true), path) : path;
 
-	if (xmlSettings.exists("lastSavedScenePath")) {
-		xmlSettings.setValue("lastSavedScenePath", relativePath);
+void ofApp::saveSceneFromPrompt()
+{
+	ofFileDialogResult result = ofSystemSaveDialog("scene.xml", "Save");
+	if (result.bSuccess) {
+		string path = result.getPath();
+
+		if (path.compare(path.length() - 4, 4, ".xml") != 0) {
+			path += ".xml";
+		}
+
+		xmlScene.clear();
+		xmlScene.addChild("scene");
+		xmlScene.setTo("scene");
+		xmlScene.addChild("trees");
+		xmlScene.setTo("trees");
+
+		for (int i = 0; i < trees.size(); i++) {
+			ofXml treeXml = trees[i]->saveToXml();
+			xmlScene.addXml(treeXml, true);
+		}
+		xmlScene.save(path);
+
+		string relativePath = ofFilePath::isAbsolute(path) ? ofFilePath::makeRelative(ofToDataPath("./", true), path) : path;
+
+		if (xmlSettings.exists("lastSavedScenePath")) {
+			xmlSettings.setValue("lastSavedScenePath", relativePath);
+		}
+		else {
+			xmlSettings.addValue("lastSavedScenePath", relativePath);
+		}
+		xmlSettings.save("settings.xml");
 	}
-	else {
-		xmlSettings.addValue("lastSavedScenePath", relativePath);
-	}
-	xmlSettings.save("settings.xml");
 }
 
 //--------------------------------------------------------------
