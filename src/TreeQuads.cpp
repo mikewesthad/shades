@@ -226,12 +226,12 @@ ofXml TreeQuad::saveToXml(string name) {
 
 	xml.addValue("animationDuration", animationDurationSeconds);
 
-	xml.addXml(topQuad.saveToXml("topQuad"), true);
-	xml.addXml(bottomQuad.saveToXml("bottomQuad"), true);
-	xml.addXml(startTopQuad.saveToXml("startTopQuad"), true);
-	xml.addXml(endTopQuad.saveToXml("endTopQuad"), true);
-	xml.addXml(startBottomQuad.saveToXml("startBottomQuad"), true);
-	xml.addXml(endBottomQuad.saveToXml("endBottomQuad"), true);
+	xml.addXml(topQuad.saveToXml("topQuad"));
+	xml.addXml(bottomQuad.saveToXml("bottomQuad"));
+	xml.addXml(startTopQuad.saveToXml("startTopQuad"));
+	xml.addXml(endTopQuad.saveToXml("endTopQuad"));
+	xml.addXml(startBottomQuad.saveToXml("startBottomQuad"));
+	xml.addXml(endBottomQuad.saveToXml("endBottomQuad"));
 	
 	return xml;
 }
