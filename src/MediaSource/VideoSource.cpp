@@ -33,7 +33,7 @@ void VideoSource::loadVideo(string videoPath)
 	path = videoPath;
 
 	#ifdef TARGET_RASPBERRY_PI
-		omxPlayer.loadMovie(videoPath);
+		video.loadMovie(videoPath);
 	#else
 		video.load(videoPath);
 		video.setLoopState(OF_LOOP_NORMAL);
@@ -84,5 +84,9 @@ void VideoSource::setSpeed(float speed)
 
 void VideoSource::update(ofEventArgs& args)
 {
-	video.update();
+	#ifdef TARGET_RASPBERRY_PI
+		// noop
+	#else
+		video.update();
+	#endif
 }
