@@ -12,6 +12,8 @@ void ofApp::setup(){
 	ofEnableNormalizedTexCoords();
 
 	newGui.setup("Menu", "gui-settings.xml");
+	newGui.setDefaultWidth(300);
+	newGui.add(sceneLabel.setup("Scene Menu", ""));
 	newGui.add(fpsLabel.setup("FPS", "60"));
 	newGui.add(addQuadButton.setup("Add Quad"));
 	newGui.add(clearSceneButton.setup("Clear Scene"));
@@ -20,13 +22,33 @@ void ofApp::setup(){
 	newGui.add(enterPresentationButton.setup("Enter Presentation Mode"));
 	
 	newGui.add(selectedQuadControlGroup.setup("Selected Quad", "gui-settings.xml"));
+	selectedQuadControlGroup.add(selectedQuadLabel.setup("Selected Quad Menu", ""));
 	selectedQuadControlGroup.add(deleteQuadButton.setup("Delete"));
+	selectedQuadControlGroup.add(changeQuadSourceButton.setup("Change Source"));
+	selectedQuadControlGroup.add(quadSplitSlider.setup("Texture Split", 0.5, 0, 1));
+	selectedQuadControlGroup.add(setStartAnimationButton.setup("Set Start Animation"));
+	selectedQuadControlGroup.add(setEndAnimationButton.setup("Set End Animation"));
+	selectedQuadControlGroup.add(animationDurationSlider.setup("Animation Duration (m)", 1, 0, 15));
+	selectedQuadControlGroup.add(selectedVideoSpeedSlider.setup("Video Speed", 1, 0, 2));
+	selectedQuadControlGroup.add(playAnimationButton.setup("Play Animation"));
+	selectedQuadControlGroup.add(stopAnimationButton.setup("Stop Animation"));
+
+	selectedVideoSpeedSlider.setUpdateOnReleaseOnly(true);
 
 	addQuadButton.addListener(this, &ofApp::addQuad);
 	clearSceneButton.addListener(this, &ofApp::clearScene);
 	saveSceneButton.addListener(this, &ofApp::saveSceneFromPrompt);
 	loadSceneButton.addListener(this, &ofApp::loadSceneFromPrompt);
 	enterPresentationButton.addListener(this, &ofApp::toggleMode);
+	deleteQuadButton.addListener(this, &ofApp::deleteSelected);
+	changeQuadSourceButton.addListener(this, &ofApp::changeSelectedSource);
+	quadSplitSlider.addListener(this, &ofApp::setSelectedSplit);
+	setStartAnimationButton.addListener(this, &ofApp::setStartAnimation);
+	setEndAnimationButton.addListener(this, &ofApp::setEndAnimation);
+	animationDurationSlider.addListener(this, &ofApp::setAnimationDuration);
+	selectedVideoSpeedSlider.addListener(this, &ofApp::setVideoSpeed);
+	playAnimationButton.addListener(this, &ofApp::playAnimation);
+	stopAnimationButton.addListener(this, &ofApp::stopAnimation);
 	
 	//gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
 	//gui->setTheme(new GuiTheme());
@@ -228,6 +250,87 @@ void ofApp::toggleMode() {
 		mode = ApplicationMode::presentation;
 	}
 	setMode(mode);
+}
+
+void ofApp::deleteSelected() {
+	if (selectedTree) {
+		for (int i = 0; i < trees.size(); i++) {
+			if (trees[i] == selectedTree) {
+				trees.erase(trees.begin() + i);
+				selectedTree = nullptr;
+			}
+		}
+	}
+}
+
+void ofApp::changeSelectedSource() {
+	if (selectedTree) {
+		ofFileDialogResult result = ofSystemLoadDialog("Load image or movie file", false, ofToDataPath(".", true));
+		if (result.bSuccess) {
+			string path = result.getPath();
+
+			regex imageExtensions("(gif|jpg|jpeg|tiff|png|bmp)$", regex_constants::icase);
+			regex videoExtensions("(mov|avi|wmv|flv|mp4)$", regex_constants::icase);
+
+			BaseSource * source;
+			if (regex_search(path, imageExtensions)) {
+				source = new ImageSource(path);
+			}
+			else if (regex_search(path, videoExtensions)) {
+				source = new VideoSource(path);
+			}
+			else {
+				throw std::string("Unrecognized file format: " + path);
+			}
+
+			selectedTree->setSource(source);
+		}
+	}
+}
+
+void ofApp::setSelectedSplit(float & newSplit) {
+	if (selectedTree) {
+		selectedTree->setTextureSplit(newSplit);
+	}
+}
+
+void ofApp::setStartAnimation() {
+	if (selectedTree) {
+		selectedTree->setAnimationStartShape();
+	}
+}
+
+void ofApp::setEndAnimation() {
+	if (selectedTree) {
+		selectedTree->setAnimationEndShape();
+	}
+}
+
+void ofApp::setAnimationDuration(float & newDuration) {
+	if (selectedTree) {
+		selectedTree->setAnimationDuration(newDuration * 60);
+	}
+}
+
+void ofApp::setVideoSpeed(float & newSpeed) {
+	if (selectedTree) {
+		if (selectedTree->getSource()->getType() == SourceType::video) {
+			VideoSource * source = dynamic_cast<VideoSource*>(selectedTree->getSource());
+			source->setSpeed(newSpeed);
+		}
+	}
+}
+
+void ofApp::playAnimation() {
+	if (selectedTree) {
+		selectedTree->playAnimation();
+	}
+}
+
+void ofApp::stopAnimation() {
+	if (selectedTree) {
+		selectedTree->stopAnimation();
+	}
 }
 
 //--------------------------------------------------------------
