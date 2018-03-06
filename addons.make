@@ -1,2 +1,3 @@
-ofxGui
 ofxAnimatable
+ofxOMXPlayer
+ofxGui

@@ -4,11 +4,26 @@
 
 VideoSource::~VideoSource()
 {
-	ofRemoveListener(ofEvents().update, this, &VideoSource::update);
+	#ifdef TARGET_RASPBERRY_PI
+		// noop
+	#else
+		ofRemoveListener(ofEvents().update, this, &VideoSource::update);
+	#endif
 }
 
 VideoSource::VideoSource(string videoPath)
 {
+	#ifdef TARGET_RASPBERRY_PI
+		ofxOMXPlayerSettings settings;
+		settings.videoPath = videoPath;
+		settings.useHDMIForAudio = true;
+		settings.enableTexture = true;
+		settings.enableLooping = true;
+		settings.enableAudio = false;
+		settings.doFlipTexture = true;
+		video.setup(settings);
+	#endif
+
 	sourceType = SourceType::video;
 	loadVideo(videoPath);
 }
@@ -16,22 +31,35 @@ VideoSource::VideoSource(string videoPath)
 void VideoSource::loadVideo(string videoPath)
 {
 	path = videoPath;
-	video.load(videoPath);
-	video.setLoopState(OF_LOOP_NORMAL);
-	video.play();
-	video.setVolume(0);
-	ofAddListener(ofEvents().update, this, &VideoSource::update);
+
+	#ifdef TARGET_RASPBERRY_PI
+		omxPlayer.loadMovie(videoPath);
+	#else
+		video.load(videoPath);
+		video.setLoopState(OF_LOOP_NORMAL);
+		video.play();
+		video.setVolume(0);
+		ofAddListener(ofEvents().update, this, &VideoSource::update);
+	#endif
 }
 
 void VideoSource::bind()
 {
-	video.getTexture().bind();
+	#ifdef TARGET_RASPBERRY_PI
+		video.getTextureReference().bind();
+	#else 
+		video.getTexture().bind();
+	#endif
 	//video.bind();
 }
 
 void VideoSource::unbind()
 {
-	video.getTexture().unbind();
+	#ifdef TARGET_RASPBERRY_PI
+		video.getTextureReference().unbind();
+	#else 
+		video.getTexture().unbind();
+	#endif
 	//video.unbind();
 }
 
@@ -48,7 +76,7 @@ int VideoSource::getHeight()
 void VideoSource::setSpeed(float speed)
 {
 	#ifdef TARGET_RASPBERRY_PI
-		video.setSpeed(speed);
+		// noop
 	#else
 		video.setSpeed(speed, false);
 	#endif
