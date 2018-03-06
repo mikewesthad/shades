@@ -28,12 +28,10 @@ void ofApp::setup(){
 	selectedQuadControlGroup.add(quadSplitSlider.setup("Texture Split", 0.5, 0, 1));
 	selectedQuadControlGroup.add(setStartAnimationButton.setup("Set Start Animation"));
 	selectedQuadControlGroup.add(setEndAnimationButton.setup("Set End Animation"));
-	selectedQuadControlGroup.add(animationDurationSlider.setup("Animation Duration (m)", 1, 0, 15));
+	selectedQuadControlGroup.add(selectedAnimationDuration.set("Animation Duration (m)", 1, 0, 15));
 	selectedQuadControlGroup.add(selectedVideoSpeedSlider.setup("Video Speed", 1, 0, 2));
 	selectedQuadControlGroup.add(playAnimationButton.setup("Play Animation"));
 	selectedQuadControlGroup.add(stopAnimationButton.setup("Stop Animation"));
-
-	selectedVideoSpeedSlider.setUpdateOnReleaseOnly(true);
 
 	addQuadButton.addListener(this, &ofApp::addQuad);
 	clearSceneButton.addListener(this, &ofApp::clearScene);
@@ -45,7 +43,7 @@ void ofApp::setup(){
 	quadSplitSlider.addListener(this, &ofApp::setSelectedSplit);
 	setStartAnimationButton.addListener(this, &ofApp::setStartAnimation);
 	setEndAnimationButton.addListener(this, &ofApp::setEndAnimation);
-	animationDurationSlider.addListener(this, &ofApp::setAnimationDuration);
+	selectedAnimationDuration.addListener(this, &ofApp::setAnimationDuration);
 	selectedVideoSpeedSlider.addListener(this, &ofApp::setVideoSpeed);
 	playAnimationButton.addListener(this, &ofApp::playAnimation);
 	stopAnimationButton.addListener(this, &ofApp::stopAnimation);
@@ -289,6 +287,8 @@ void ofApp::changeSelectedSource() {
 }
 
 void ofApp::setSelectedSplit(float & newSplit) {
+	float snappedSplit = floorf(newSplit / 0.01f) * 0.01f;
+	if (snappedSplit != newSplit) newSplit = snappedSplit;
 	if (selectedTree) {
 		selectedTree->setTextureSplit(newSplit);
 	}
@@ -307,6 +307,8 @@ void ofApp::setEndAnimation() {
 }
 
 void ofApp::setAnimationDuration(float & newDuration) {
+	float snappedDuration = floorf(newDuration / 0.05f) * 0.05f;
+	if (newDuration != snappedDuration) newDuration = snappedDuration;
 	if (selectedTree) {
 		selectedTree->setAnimationDuration(newDuration * 60);
 	}
@@ -376,6 +378,7 @@ void ofApp::selectTree(shared_ptr<TreeQuad> tree) {
 	tree->enableInput();
 	selectedTree = tree;
 	//animationDurationInput->setText(ofToString(selectedTree->getAnimationDuration() / 60));
+	animationDurationInput->setText(ofToString(selectedTree->getAnimationDuration() / 60));
 	for (int i = 0; i < trees.size(); i++) {
 		if (trees[i] != tree) {
 			trees[i]->disableInput();
@@ -483,6 +486,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+	if (button == 2) {
+		toggleMode();
+		return;
+	}
 	if (mode == ApplicationMode::presentation) return;
 	for (int i = 0; i < trees.size(); i++) {
 		if (trees[i]->isPointInside(ofVec2f(x, y))) {

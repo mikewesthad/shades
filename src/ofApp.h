@@ -75,9 +75,9 @@ class ofApp : public ofBaseApp{
 		ofxFloatSlider quadSplitSlider;
 		ofxButton setStartAnimationButton;
 		ofxButton setEndAnimationButton;
-		ofxFloatSlider animationDurationSlider;
 		ofxFloatSlider selectedVideoSpeedSlider;
 		ofxButton playAnimationButton;
 		ofxButton stopAnimationButton;
 
+		ofParameter<float> selectedAnimationDuration;
 };
