@@ -2,164 +2,327 @@
 	<trees>
 		<tree>
 			<source>
-				<path>checker.jpg</path>
+				<path>GradientTransition.mp4</path>
+				<type>video</type>
+			</source>
+			<animationDuration>1800</animationDuration>
+			<topQuad>
+				<topLeft>
+					<x>351</x>
+					<y>111</y>
+					<u>0</u>
+					<v>0</v>
+				</topLeft>
+				<topRight>
+					<x>734</x>
+					<y>100</y>
+					<u>1</u>
+					<v>0</v>
+				</topRight>
+				<bottomRight>
+					<x>668</x>
+					<y>418</y>
+					<u>1</u>
+					<v>0.8</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>471</x>
+					<y>418</y>
+					<u>0</u>
+					<v>0.8</v>
+				</bottomLeft>
+			</topQuad>
+			<bottomQuad>
+				<topLeft>
+					<x>471</x>
+					<y>418</y>
+					<u>0</u>
+					<v>0.8</v>
+				</topLeft>
+				<topRight>
+					<x>668</x>
+					<y>418</y>
+					<u>1</u>
+					<v>0.8</v>
+				</topRight>
+				<bottomRight>
+					<x>751</x>
+					<y>511</y>
+					<u>1</u>
+					<v>1</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>351</x>
+					<y>511</y>
+					<u>0</u>
+					<v>1</v>
+				</bottomLeft>
+			</bottomQuad>
+			<startTopQuad>
+				<topLeft>
+					<x>0</x>
+					<y>0</y>
+					<u>0</u>
+					<v>0</v>
+				</topLeft>
+				<topRight>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
+					<v>0</v>
+				</topRight>
+				<bottomRight>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>0</x>
+					<y>600</y>
+					<u>0</u>
+					<v>1</v>
+				</bottomLeft>
+			</startTopQuad>
+			<endTopQuad>
+				<topLeft>
+					<x>0</x>
+					<y>0</y>
+					<u>0</u>
+					<v>0</v>
+				</topLeft>
+				<topRight>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
+					<v>0</v>
+				</topRight>
+				<bottomRight>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>0</x>
+					<y>600</y>
+					<u>0</u>
+					<v>1</v>
+				</bottomLeft>
+			</endTopQuad>
+			<startBottomQuad>
+				<topLeft>
+					<x>0</x>
+					<y>0</y>
+					<u>0</u>
+					<v>0</v>
+				</topLeft>
+				<topRight>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
+					<v>0</v>
+				</topRight>
+				<bottomRight>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>0</x>
+					<y>600</y>
+					<u>0</u>
+					<v>1</v>
+				</bottomLeft>
+			</startBottomQuad>
+			<endBottomQuad>
+				<topLeft>
+					<x>0</x>
+					<y>0</y>
+					<u>0</u>
+					<v>0</v>
+				</topLeft>
+				<topRight>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
+					<v>0</v>
+				</topRight>
+				<bottomRight>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
+				</bottomRight>
+				<bottomLeft>
+					<x>0</x>
+					<y>600</y>
+					<u>0</u>
+					<v>1</v>
+				</bottomLeft>
+			</endBottomQuad>
+		</tree>
+		<tree>
+			<source>
+				<path>sky-100x480.png</path>
 				<type>image</type>
 			</source>
 			<animationDuration>1800</animationDuration>
 			<topQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>124</x>
+					<y>83</y>
 					<u>0</u>
 					<v>0</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
+					<x>208</x>
+					<y>93</y>
+					<u>1</u>
 					<v>0</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>241</x>
+					<y>454</y>
+					<u>1</u>
+					<v>0.8</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>124</x>
+					<y>467</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>0.8</v>
 				</bottomLeft>
 			</topQuad>
 			<bottomQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>124</x>
+					<y>467</y>
 					<u>0</u>
-					<v>0</v>
+					<v>0.8</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
-					<v>0</v>
+					<x>241</x>
+					<y>454</y>
+					<u>1</u>
+					<v>0.8</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>398</x>
+					<y>622</y>
+					<u>1</u>
+					<v>1</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>298</x>
+					<y>622</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>1</v>
 				</bottomLeft>
 			</bottomQuad>
 			<startTopQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>0</x>
+					<y>0</y>
 					<u>0</u>
 					<v>0</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
 					<v>0</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>0</x>
+					<y>600</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>1</v>
 				</bottomLeft>
 			</startTopQuad>
 			<endTopQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>0</x>
+					<y>0</y>
 					<u>0</u>
 					<v>0</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
 					<v>0</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>0</x>
+					<y>600</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>1</v>
 				</bottomLeft>
 			</endTopQuad>
 			<startBottomQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>0</x>
+					<y>0</y>
 					<u>0</u>
 					<v>0</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
 					<v>0</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>0</x>
+					<y>600</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>1</v>
 				</bottomLeft>
 			</startBottomQuad>
 			<endBottomQuad>
 				<topLeft>
-					<x>117</x>
-					<y>-73</y>
+					<x>0</x>
+					<y>0</y>
 					<u>0</u>
 					<v>0</v>
 				</topLeft>
 				<topRight>
-					<x>1286</x>
-					<y>140</y>
-					<u>1496</u>
+					<x>800</x>
+					<y>0</y>
+					<u>1</u>
 					<v>0</v>
 				</topRight>
 				<bottomRight>
-					<x>1478</x>
-					<y>485.2</y>
-					<u>1496</u>
-					<v>935.2</v>
+					<x>800</x>
+					<y>600</y>
+					<u>1</u>
+					<v>1</v>
 				</bottomRight>
 				<bottomLeft>
-					<x>159</x>
-					<y>517.2</y>
+					<x>0</x>
+					<y>600</y>
 					<u>0</u>
-					<v>935.2</v>
+					<v>1</v>
 				</bottomLeft>
 			</endBottomQuad>
 		</tree>
