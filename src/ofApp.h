@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "Quad.h"
 #include "TreeQuads.h"
-//#include "ofxDatGui.h"
-#include "ofxGui.h"
+#include "ofxDatGui.h"
+//#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -55,29 +55,30 @@ class ofApp : public ofBaseApp{
 		shared_ptr<TreeQuad> selectedTree;
 		vector<shared_ptr<TreeQuad>> trees;
 
-		//ofxDatGuiTextInput* animationDurationInput;
-		//ofxDatGuiFolder* selectedQuadFolder;
-		//ofxDatGuiSlider * textureSplitSlider;
-		//ofxDatGuiSlider * videoSpeedSlider;
-		//ofxDatGui* gui;
-		ofxPanel newGui;
-		ofxLabel fpsLabel;
-		ofxLabel sceneLabel;
-		ofxLabel selectedQuadLabel;
-		ofxButton addQuadButton;
-		ofxButton clearSceneButton;
-		ofxButton saveSceneButton;
-		ofxButton loadSceneButton;
-		ofxButton enterPresentationButton;
-		ofxGuiGroup selectedQuadControlGroup;
-		ofxButton deleteQuadButton;
-		ofxButton changeQuadSourceButton;
-		ofxFloatSlider quadSplitSlider;
-		ofxButton setStartAnimationButton;
-		ofxButton setEndAnimationButton;
-		ofxFloatSlider selectedVideoSpeedSlider;
-		ofxButton playAnimationButton;
-		ofxButton stopAnimationButton;
+		ofxDatGuiTextInput* animationDurationInput;
+		ofxDatGuiFolder* selectedQuadFolder;
+		ofxDatGuiSlider * textureSplitSlider;
+		ofxDatGuiSlider * videoSpeedSlider;
+		ofxDatGui* gui;
 
-		ofParameter<float> selectedAnimationDuration;
+		//ofxPanel newGui;
+		//ofxLabel fpsLabel;
+		//ofxLabel sceneLabel;
+		//ofxLabel selectedQuadLabel;
+		//ofxButton addQuadButton;
+		//ofxButton clearSceneButton;
+		//ofxButton saveSceneButton;
+		//ofxButton loadSceneButton;
+		//ofxButton enterPresentationButton;
+		//ofxGuiGroup selectedQuadControlGroup;
+		//ofxButton deleteQuadButton;
+		//ofxButton changeQuadSourceButton;
+		//ofxFloatSlider quadSplitSlider;
+		//ofxButton setStartAnimationButton;
+		//ofxButton setEndAnimationButton;
+		//ofxFloatSlider selectedVideoSpeedSlider;
+		//ofxButton playAnimationButton;
+		//ofxButton stopAnimationButton;
+
+		//ofParameter<float> selectedAnimationDuration;
 };
