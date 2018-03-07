@@ -9,44 +9,10 @@ void ofApp::setup(){
 	ofSetFrameRate(60);
 
 	ofSetWindowShape(ofGetScreenWidth(), ofGetScreenHeight());
+
+	// One of these works one each laptop...
+	ofDisableArbTex();
 	ofEnableNormalizedTexCoords();
-
-	//newGui.setup("Menu", "gui-settings.xml");
-	//newGui.setDefaultWidth(300);
-	//newGui.add(sceneLabel.setup("Scene Menu", ""));
-	//newGui.add(fpsLabel.setup("FPS", "60"));
-	//newGui.add(addQuadButton.setup("Add Quad"));
-	//newGui.add(clearSceneButton.setup("Clear Scene"));
-	//newGui.add(loadSceneButton.setup("Load Scene"));
-	//newGui.add(saveSceneButton.setup("Save Scene"));
-	//newGui.add(enterPresentationButton.setup("Enter Presentation Mode"));
-	//
-	//newGui.add(selectedQuadControlGroup.setup("Selected Quad", "gui-settings.xml"));
-	//selectedQuadControlGroup.add(selectedQuadLabel.setup("Selected Quad Menu", ""));
-	//selectedQuadControlGroup.add(deleteQuadButton.setup("Delete"));
-	//selectedQuadControlGroup.add(changeQuadSourceButton.setup("Change Source"));
-	//selectedQuadControlGroup.add(quadSplitSlider.setup("Texture Split", 0.5, 0, 1));
-	//selectedQuadControlGroup.add(setStartAnimationButton.setup("Set Start Animation"));
-	//selectedQuadControlGroup.add(setEndAnimationButton.setup("Set End Animation"));
-	//selectedQuadControlGroup.add(selectedAnimationDuration.set("Animation Duration (m)", 1, 0, 15));
-	//selectedQuadControlGroup.add(selectedVideoSpeedSlider.setup("Video Speed", 1, 0, 2));
-	//selectedQuadControlGroup.add(playAnimationButton.setup("Play Animation"));
-	//selectedQuadControlGroup.add(stopAnimationButton.setup("Stop Animation"));
-
-	//addQuadButton.addListener(this, &ofApp::addQuad);
-	//clearSceneButton.addListener(this, &ofApp::clearScene);
-	//saveSceneButton.addListener(this, &ofApp::saveSceneFromPrompt);
-	//loadSceneButton.addListener(this, &ofApp::loadSceneFromPrompt);
-	//enterPresentationButton.addListener(this, &ofApp::toggleMode);
-	//deleteQuadButton.addListener(this, &ofApp::deleteSelected);
-	//changeQuadSourceButton.addListener(this, &ofApp::changeSelectedSource);
-	//quadSplitSlider.addListener(this, &ofApp::setSelectedSplit);
-	//setStartAnimationButton.addListener(this, &ofApp::setStartAnimation);
-	//setEndAnimationButton.addListener(this, &ofApp::setEndAnimation);
-	//selectedAnimationDuration.addListener(this, &ofApp::setAnimationDuration);
-	//selectedVideoSpeedSlider.addListener(this, &ofApp::setVideoSpeed);
-	//playAnimationButton.addListener(this, &ofApp::playAnimation);
-	//stopAnimationButton.addListener(this, &ofApp::stopAnimation);
 		
 	gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
 	gui->setTheme(new GuiTheme());
@@ -275,14 +241,6 @@ void ofApp::stopAnimation() {
 //--------------------------------------------------------------
 void ofApp::update(){
 	selectedQuadFolder->setVisible(selectedTree != nullptr);
-
-	//if (selectedTree != nullptr) {
-	//	selectedQuadControlGroup.add(&deleteQuadButton);
-	//}
-	//else {
-	//	selectedQuadControlGroup.clear();
-	//}
-	//fpsLabel.setup("FPS", ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -292,10 +250,6 @@ void ofApp::draw(){
 	for (int i = 0; i < trees.size(); i++) {
 		trees[i]->draw();
 	}
-
-	//if (mode == ApplicationMode::mapping) {
-	//	newGui.draw();
-	//}
 }
 
 void ofApp::setMode(ApplicationMode newMode) {
@@ -321,7 +275,6 @@ void ofApp::setMode(ApplicationMode newMode) {
 void ofApp::selectTree(shared_ptr<TreeQuad> tree) {
 	tree->enableInput();
 	selectedTree = tree;
-	//selectedAnimationDuration.set(selectedTree->getAnimationDuration() / 60);
 	animationDurationInput->setText(ofToString(selectedTree->getAnimationDuration() / 60));
 	for (int i = 0; i < trees.size(); i++) {
 		if (trees[i] != tree) {
@@ -472,38 +425,3 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
-
-
-//ofMesh subdividedQuad;
-//
-//float width = 200;
-//float height = 200;
-//float numSubdivisions = 10;
-//for (int row = 0; row < numSubdivisions; row++) {
-//	ofVec2f left(
-//		ofMap(row, 0, numSubdivisions, topLeft.x, bottomLeft.x),
-//		ofMap(row, 0, numSubdivisions, topLeft.y, bottomLeft.y)
-//	);
-//	ofVec2f right(
-//		ofMap(row, 0, numSubdivisions, topRight.x, bottomRight.x),
-//		ofMap(row, 0, numSubdivisions, topRight.y, bottomRight.y)
-//	);
-//	for (int col = 0; col < numSubdivisions; col++) {
-//		float x = ofMap(col, 0, numSubdivisions, left.x, right.x);
-//		float y = ofMap(col, 0, numSubdivisions, left.y, right.y);
-//		subdividedQuad.addVertex(ofVec3f(x, y, 1));
-//		subdividedQuad.addTexCoord(ofVec2f(col / numSubdivisions * image.getWidth(), row / numSubdivisions * image.getHeight()));
-//	}
-//}
-//
-//for (int y = 0; y < numSubdivisions - 1; y++) {
-//	for (int x = 0; x < numSubdivisions - 1; x++) {
-//		subdividedQuad.addIndex(x + y * numSubdivisions);         // 0
-//		subdividedQuad.addIndex((x + 1) + y * numSubdivisions);     // 1
-//		subdividedQuad.addIndex(x + (y + 1) * numSubdivisions);     // 10
-//
-//		subdividedQuad.addIndex((x + 1) + y * numSubdivisions);     // 1
-//		subdividedQuad.addIndex((x + 1) + (y + 1) * numSubdivisions); // 11
-//		subdividedQuad.addIndex(x + (y + 1) * numSubdivisions);     // 10
-//	}
-//}

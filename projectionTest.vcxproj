@@ -96,8 +96,18 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;
-C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -117,8 +127,6 @@ C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalInclud
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;
-C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -137,8 +145,18 @@ C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalInclud
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;
-C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -159,8 +177,18 @@ C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalInclud
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;
-C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxXmlSettings\libs;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxWMFVideoPlayer\src\presenter\common;
+C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxAnimatable\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -183,14 +211,6 @@ C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalInclud
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.cpp" />
     <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Helpers.cpp" />
@@ -238,15 +258,6 @@ C:\Users\micha\Desktop\of_v0.9.8_vs_release\addons\ofxGui\src;%(AdditionalInclud
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.h" />
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\AsyncCB.h" />

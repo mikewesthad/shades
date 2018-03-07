@@ -3,9 +3,7 @@
 #include "BaseSource.h"
 #include "ofMain.h"
 
-#ifdef TARGET_RASPBERRY_PI
-	#include "ofxOMXPlayer.h"
-#else
+#ifndef TARGET_OSX
 	#include "ofxWMFVideoPlayer.h"
 #endif
 
@@ -25,12 +23,10 @@ public:
 private:
 	void update(ofEventArgs& args);
 
-	#ifdef TARGET_RASPBERRY_PI
-		ofxOMXPlayer video;
-	#elif TARGET_OSX
-		ofVideoPlayer video;
-	#else
+	#ifndef TARGET_OSX
 		ofxWMFVideoPlayer video;
+	#else
+		ofVideoPlayer video;
 	#endif
 };
 

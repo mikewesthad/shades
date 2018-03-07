@@ -4,26 +4,11 @@
 
 VideoSource::~VideoSource()
 {
-	#ifdef TARGET_RASPBERRY_PI
-		// noop
-	#else
-		ofRemoveListener(ofEvents().update, this, &VideoSource::update);
-	#endif
+	ofRemoveListener(ofEvents().update, this, &VideoSource::update);
 }
 
 VideoSource::VideoSource(string videoPath)
 {
-	#ifdef TARGET_RASPBERRY_PI
-		ofxOMXPlayerSettings settings;
-		settings.videoPath = videoPath;
-		settings.useHDMIForAudio = true;
-		settings.enableTexture = true;
-		settings.enableLooping = true;
-		settings.enableAudio = false;
-		settings.doFlipTexture = true;
-		video.setup(settings);
-	#endif
-
 	sourceType = SourceType::video;
 	loadVideo(videoPath);
 }
@@ -32,35 +17,29 @@ void VideoSource::loadVideo(string videoPath)
 {
 	path = videoPath;
 
-	#ifdef TARGET_RASPBERRY_PI
-		video.loadMovie(videoPath);
-	#else
-		video.load(videoPath);
-		video.setLoopState(OF_LOOP_NORMAL);
-		video.play();
-		video.setVolume(0);
-		ofAddListener(ofEvents().update, this, &VideoSource::update);
-	#endif
+	video.load(videoPath);
+	video.setLoopState(OF_LOOP_NORMAL);
+	video.play();
+	video.setVolume(0);
+	ofAddListener(ofEvents().update, this, &VideoSource::update);
 }
 
 void VideoSource::bind()
 {
-	#ifdef TARGET_RASPBERRY_PI
-		video.getTextureReference().bind();
-	#else 
+	#ifndef TARGET_OSX
 		video.getTexture().bind();
+	#else
+		video.bind();
 	#endif
-	//video.bind();
 }
 
 void VideoSource::unbind()
 {
-	#ifdef TARGET_RASPBERRY_PI
-		video.getTextureReference().unbind();
-	#else 
+	#ifndef TARGET_OSX
 		video.getTexture().unbind();
+	#else
+		video.unbind();
 	#endif
-	//video.unbind();
 }
 
 int VideoSource::getWidth()
@@ -75,18 +54,14 @@ int VideoSource::getHeight()
 
 void VideoSource::setSpeed(float speed)
 {
-	#ifdef TARGET_RASPBERRY_PI
-		// noop
-	#else
+	#ifndef TARGET_OSX
 		video.setSpeed(speed, false);
+	#else
+		video.setSpeed(speed);
 	#endif
 }
 
 void VideoSource::update(ofEventArgs& args)
 {
-	#ifdef TARGET_RASPBERRY_PI
-		// noop
-	#else
-		video.update();
-	#endif
+	video.update();
 }
