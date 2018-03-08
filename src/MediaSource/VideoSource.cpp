@@ -18,9 +18,9 @@ void VideoSource::loadVideo(string videoPath)
 	path = videoPath;
 
 	video.load(videoPath);
-	video.setLoopState(OF_LOOP_NORMAL);
+	//video.setLoopState(OF_LOOP_NORMAL);
 	video.play();
-	video.setVolume(0);
+	//video.setVolume(0);
 	ofAddListener(ofEvents().update, this, &VideoSource::update);
 }
 
@@ -64,4 +64,7 @@ void VideoSource::setSpeed(float speed)
 void VideoSource::update(ofEventArgs& args)
 {
 	video.update();
+	if (video.isStopped()) {
+		video.play();
+	}
 }
