@@ -6,6 +6,8 @@ TreeQuad::TreeQuad(float x, float y, BaseSource * source, float textureSplitFrac
 {
 	this->source = source;
 	setTextureSplit(textureSplitFraction);
+	setAnimationStartShape();
+	setAnimationEndShape();
 }
 
 TreeQuad::TreeQuad()
